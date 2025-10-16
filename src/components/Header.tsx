@@ -9,7 +9,6 @@ export function Header(){
             <div className="flex items-center gap-2">
                 <span className="text-gray-200 text-sm">Olá, Ville Nunes</span>
                 <img src={logout} className="hover:opacity-60 transition-all" alt="imagem logout" />
-
             </div>
         </header>
     )
