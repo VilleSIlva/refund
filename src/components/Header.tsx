@@ -3,7 +3,7 @@ import logo from "../assets/logo.svg"
 
 export function Header(){
     return(
-        <header className=" flex justify-between w-full md:m-w p-8">
+        <header className=" flex justify-between w-full md:max-w-[1000px] p-8">
             <img src={logo} className="h-10" alt="Logo" />
 
             <div className="flex items-center gap-2">
