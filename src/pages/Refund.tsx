@@ -32,7 +32,7 @@ export function Refund(){
     function sendForm(data:FormProps){
         console.log(data)
         setLoading(true)
-        navigate('/confirm',{state:{onSubmit:true}})
+        navigate('/confirm',{state:{fromSubmit:true}})
     }
 
     return(
