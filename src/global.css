@@ -28,3 +28,12 @@ select{
   background-position: right 0.5rem top 50%;
 }
 
+::-webkit-scrollbar{
+  background:transparent;
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--color-green-100);
+}
+
