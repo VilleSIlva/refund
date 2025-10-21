@@ -4,5 +4,5 @@ export function currentPrice(value:number):string{
         currency: 'BRL'
     })
 
-    return price.format(value)
+    return price.format(value).replace('R$','')
 }

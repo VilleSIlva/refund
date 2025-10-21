@@ -20,8 +20,8 @@ export function ItemRefund({data,...props}:ItemRefundProps){
                 <strong className="text-sm">{data.userName}</strong>
                 <p className="text-xs text-gray-200">{data.category}</p>
            </div>
-           <span className="text-gray-100 text-sm">
-            {data.price}
+           <span className="text-gray-100">
+             <span className="font-bold text-green-100 text-sm">R$</span><span className="">{data.price}</span>
            </span>
         </a>
     )
