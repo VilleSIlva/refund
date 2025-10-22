@@ -10,16 +10,21 @@ import { Paginate } from "../components/Paginate";
 
 export function Dashboard(){
 
-    const [name,setName] = useState('')
-    const [page,setPage] = useState(1)
-    const [totalOfPage,setTotalOfPage] = useState(10) // eslint-disable-line 
-
-    const item:IitemRefound = {
+    const itemDefault:IitemRefound = {
+        id: '123',
         userName: 'VIlle Nunes',
         price: currentPrice(35.0),
         imgIcons:CATEGORIES.food.image,
         category:CATEGORIES.food.name
     }
+
+    const [name,setName] = useState('')
+    const [page,setPage] = useState(1)
+    // eslint-disable-next-line
+    const [refund,_setRefund] = useState<IitemRefound[]>([itemDefault])
+     // eslint-disable-next-line
+    const [totalOfPage,_setTotalOfPage] = useState(10)
+ 
 
     function handlerPaginate(action:'next' | 'previous'){
         setPage((page)=>{
@@ -49,7 +54,9 @@ export function Dashboard(){
             </form>
 
             <div className="p-3 my-5 overflow-y-auto flex gap-1 flex-col max-h-[360px]">
-                <ItemRefund data={item}/>
+                {refund.map((i)=>(
+                    <ItemRefund href={`/refund/${i.id}`} key={i.id} data={i}/>
+                ))}
             </div>
    
             <Paginate onNext={()=>handlerPaginate('next')} onPrevius={()=>handlerPaginate('previous')} current={page} total={totalOfPage}/>

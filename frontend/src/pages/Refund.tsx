@@ -6,7 +6,9 @@ import { Select } from "../components/Select";
 import { CATEGORIES, CATEGORIES_KEY } from "../utils/category";
 
 import { Controller,useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+import fileSvg from '../assets/file.svg'
 
 type FormProps = {
     name:string,
@@ -19,11 +21,12 @@ export function Refund(){
 
     const [loadin,setLoading] = useState(false)
     const navigate = useNavigate()
+    const params = useParams<{id:string}>()
 
     const {control,watch,handleSubmit} = useForm<FormProps>({defaultValues:{
-        name:'',
-        price:'',
-        category:""
+        name:'teste',
+        price:'20',
+        category:"1"
     }})
 
 
@@ -31,6 +34,9 @@ export function Refund(){
 
     function sendForm(data:FormProps){
         console.log(data)
+        if(params.id){
+            return navigate(-1)
+        }
         setLoading(true)
         navigate('/confirm',{state:{fromSubmit:true}})
     }
@@ -45,6 +51,7 @@ export function Refund(){
             <Controller
                 control={control}
                 name="name"
+                disabled={!!params.id}
                 render={({field})=>(<Input {...field} legend="Nome da solicitacão"/>)}
             />
 
@@ -52,6 +59,7 @@ export function Refund(){
 
                 <Controller
                     control={control}
+                    disabled={!!params.id}
                     name="category"
                     render={({field})=>(
                     <Select {...field} legend='Categoria'>
@@ -65,18 +73,26 @@ export function Refund(){
 
                 <Controller
                     control={control}
+                    disabled={!!params.id}
                     name="price"
                     render={({field})=>( <Input legend="Valor" {...field} placeholder="R$00.00"/>)}
                 />
             </div>
 
-            <Controller
+            {params.id ?
+             (<a className="text-center text-sm text-green-200 my-5 flex items-center justify-center gap-3 hover:text-green-100" href="">
+                <img src={fileSvg} alt="" />Abrir Comprovante
+             </a>)
+              :
+              (
+              <Controller
                 control={control}
                 name="file"
                 render={({field:{onChange}})=>( <InputFile filename={file?.name} onChange={(e)=>onChange(e.target.files?.[0] || null)}/>)}
-            />
+            />)}
+
             <Button type="submit" isLoading={loadin}>
-                Enviar
+                {params.id ? 'Voltar' : 'Enviar'}
             </Button>
         </form>
     )

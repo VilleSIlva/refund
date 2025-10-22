@@ -2,6 +2,7 @@ import type React from "react"
 
 
 export interface IitemRefound{
+    id:string
     userName:string,
     category:string,
     imgIcons:string,
@@ -14,7 +15,7 @@ type ItemRefundProps = React.ComponentProps<'a'> & {
 
 export function ItemRefund({data,...props}:ItemRefundProps){
     return(
-        <a {...props} className="flex  items-center justify-items gap-3 bg-gray-500 cursor-pointer hover:bg-gray-400/90 rounded p-2" href="">
+        <a {...props} className="flex  items-center justify-items gap-3 bg-gray-500 cursor-pointer hover:bg-gray-400/90 rounded p-2">
            <img src={data.imgIcons} alt={data.category} />
            <div className="flex-1">
                 <strong className="text-sm">{data.userName}</strong>
