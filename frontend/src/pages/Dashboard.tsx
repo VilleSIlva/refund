@@ -1,4 +1,4 @@
-import { act, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Input } from "../components/Input";
 
 import searchSvg from '../assets/search.svg'
@@ -12,7 +12,7 @@ export function Dashboard(){
 
     const [name,setName] = useState('')
     const [page,setPage] = useState(1)
-    const [totalOfPage,setTotalOfPage] = useState(10)
+    const [totalOfPage,setTotalOfPage] = useState(10) // eslint-disable-line 
 
     const item:IitemRefound = {
         userName: 'VIlle Nunes',
