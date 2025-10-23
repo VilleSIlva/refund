@@ -1,3 +1,4 @@
+import 'express-async-error'
 import express from 'express'
 import cors from 'cors'
 
